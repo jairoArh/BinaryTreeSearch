@@ -1,37 +1,21 @@
 package test;
 
 import model.BinaryTree;
+import model.Car;
 
 public class Runner {
     public static void main(String[] args) {
-        BinaryTree<Integer> bts = new BinaryTree<>((o1,o2)->Integer.compare( o1, o2));
+        BinaryTree<Car> bts = new BinaryTree<>((car1, car2)->Integer.compare( car1.getModel(),car2.getModel()));
 
-        bts.addNode( 50 );
-        bts.addNode( 10 );
-        bts.addNode( 69 );
-        bts.addNode( 5 );
-        bts.addNode( 34 );
-        bts.addNode( 57 );
-        bts.addNode( 95 );
-        bts.addNode( 18 );
-        bts.addNode( 40 );
-        bts.addNode( 63 );
-        bts.addNode( 120 );
-        bts.addNode( 100 );
+        bts.addNode( new Car("JJJ708","Renault 9",1989, "Azul"));
+        bts.addNode( new Car("NOT560","Chevrolet Aveo",2007, "Rojo"));
+        bts.addNode( new Car("DZW615","Kia Picanto",2018, "Gris"));
+        bts.addNode( new Car("HWY818","Nissan Versa",2014, "Blanco"));
+        bts.addNode( new Car("ZGB453","Mazda CX5",2016, "Verde"));
+        bts.addNode( new Car("WGD737","Chevrolet Corsa",2006, "Plata"));
+        bts.addNode( new Car("BFT826","Ford Fiesta",2020, "Rojo"));
 
-        //preorden
-        //50 10 5 34 18 40 69 57 63 95 120 100
-        //bts.listPresort().forEach( System.out::println);
+        bts.listInsort().forEach( System.out::println );
 
-        //inorden
-        //5 10 18 34 40 50 57 63 69 95 100 120
-        //bts.listInsort().forEach( System.out::println);
-
-        //posorden
-        //5 18 40 34 10 63 57 100 120 95 69 50
-        //bts.listPosort().forEach( System.out::println);
-
-        //amplitud hacia hojas
-        bts.listAmplitudeTop().forEach( System.out::println);
     }
 }
