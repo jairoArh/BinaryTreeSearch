@@ -1,7 +1,9 @@
 package model;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Stack;
 
 public class BinaryTree<T> {
     private TreeNode<T> root;
@@ -81,6 +83,49 @@ public class BinaryTree<T> {
             posort( node.getRight());
             list.add( node.getInfo());
         }
+    }
+
+    public ArrayList<T> listAmplitudeBottom(){
+        list = new ArrayList<>();
+        ArrayDeque<TreeNode<T>> tail = new ArrayDeque<>();
+        tail.add( root );
+        TreeNode<T> aux = null;
+        while( !tail.isEmpty( ) ){
+            aux = tail.poll();
+            if( aux.getLeft() != null ){
+                tail.add( aux.getLeft());
+            }
+            if( aux.getRight() != null ){
+                tail.add( aux.getRight());
+            }
+            list.add( aux.getInfo());
+        }
+
+        return list;
+    }
+
+    public ArrayList<T> listAmplitudeTop(){
+        Stack<T> out = new Stack<>();
+        list = new ArrayList<>();
+        ArrayDeque<TreeNode<T>> tail = new ArrayDeque<>();
+        tail.add( root );
+        TreeNode<T> aux = null;
+        while( !tail.isEmpty( ) ){
+            aux = tail.poll();
+            if( aux.getLeft() != null ){
+                tail.add( aux.getLeft());
+            }
+            if( aux.getRight() != null ){
+                tail.add( aux.getRight());
+            }
+           out.push( aux.getInfo());
+        }
+
+        while( !out.isEmpty( ) ){
+            list.add( out.pop( ) );
+        }
+
+        return list;
     }
 
 }

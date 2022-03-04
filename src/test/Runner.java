@@ -29,6 +29,9 @@ public class Runner {
 
         //posorden
         //5 18 40 34 10 63 57 100 120 95 69 50
-        bts.listPosort().forEach( System.out::println);
+        //bts.listPosort().forEach( System.out::println);
+
+        //amplitud hacia hojas
+        bts.listAmplitudeTop().forEach( System.out::println);
     }
 }
